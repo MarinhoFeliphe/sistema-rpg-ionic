@@ -1,3 +1,44 @@
 page-races {
 
+    h1 {
+        text-align: center;
+    }
+
+    .race-img {
+        width: 220px;
+        height: 280px;
+        position: relative;
+        right: 50px;
+        top: 30px;
+    }
+
+    .grid {
+        position: relative;
+        right: 0px;
+        bottom: 245px;
+        width: 100px;
+        margin-right: 0px;                
+    }
+
+    .row {
+        border: 1px solid #d6d6d6;
+        width: 100%;
+        background: #f8f8f8;        
+    }
+
+    .other-details {
+        position: relative;
+        bottom: 80px;
+    }
+
+    p {
+        position: relative;
+        bottom: 100px;
+    }
+
+    h1 {
+        position: relative;
+        top: 25px; 
+    }
+
 }

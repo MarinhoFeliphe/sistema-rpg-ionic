@@ -1,9 +1,40 @@
 <ion-header>
   <ion-navbar>
-    <ion-title>Escolha uma Raça</ion-title>
+    <ion-title style="text-align: center">Escolha uma Raça</ion-title>
   </ion-navbar>
 </ion-header>
 
-<ion-content padding>
+<ion-content>
+
+    <ion-slides pager="true">
+      <ion-slide *ngFor="let race of races">
+        <img class="race-img" src="assets/imgs/races/{{race.name}}.jpg" alt="race">
+        <h1>{{ race.name }}</h1>
+        <ion-grid class="grid">
+            <ion-row>
+              <ion-col>
+                For: {{ race.attributes.strength }}
+              </ion-col>              
+            </ion-row>
+            <ion-row>
+              <ion-col>
+                Agi: {{ race.attributes.agility }}
+              </ion-col>                  
+            </ion-row>
+            <ion-row>
+              <ion-col>
+                Int: {{ race.attributes.intelligence }}
+              </ion-col>                  
+            </ion-row>
+            <ion-row>
+              <ion-col>
+                Von: {{ race.attributes.will }}
+              </ion-col>
+            </ion-row>
+        </ion-grid>
+        <p>Bônus: {{race.bonus}}</p>
+        <button ion-button class="other-details">Habilidade da Raça</button>
+      </ion-slide>
+    </ion-slides>
 
 </ion-content>
