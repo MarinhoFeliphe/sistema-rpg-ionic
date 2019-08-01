@@ -8,6 +8,7 @@ import { MyApp } from './app.component';
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 import { RaceService } from '../services/race/race.service';
+import { ErrorInterceptorProvider } from '../interceptors/error-interceptors';
 
 @NgModule({
   declarations: [
@@ -26,7 +27,8 @@ import { RaceService } from '../services/race/race.service';
     StatusBar,
     SplashScreen,
     {provide: ErrorHandler, useClass: IonicErrorHandler},
-    RaceService
+    RaceService,
+    ErrorInterceptorProvider
   ]
 })
 export class AppModule {}

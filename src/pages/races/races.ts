@@ -27,12 +27,8 @@ export class RacesPage {
       .subscribe(response => {
         this.races = response;        
         this.isBonus = (this.races['bonus']) ? true : false;
-        console.log(response);
-        console.log(this.isBonus);
       },
-      error => {
-        console.log(error);
-      });
+      error => {});
     
   }
   
