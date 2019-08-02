@@ -1,4 +1,4 @@
-export interface Skill {
+export interface SkillDTO {
     id: string;
     name: string;
     description: string;
