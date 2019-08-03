@@ -12,7 +12,6 @@ import { MenuController } from 'ionic-angular/components/app/menu-controller';
 export class RacesPage {
 
   races: RacesDTO[];
-  isBonus: boolean = true;
 
   constructor(
       public navCtrl: NavController
@@ -25,8 +24,7 @@ export class RacesPage {
 
     this.raceService.findAll()
       .subscribe(response => {
-        this.races = response;        
-        this.isBonus = (this.races['bonus']) ? true : false;
+        this.races = response; 
       },
       error => {});
     

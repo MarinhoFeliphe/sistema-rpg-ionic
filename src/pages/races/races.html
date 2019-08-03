@@ -5,8 +5,8 @@
 </ion-header>
 
 <ion-content>
-
     <ion-slides pager="true">
+
       <ion-slide *ngFor="let race of races">
         <img class="race-img" src="assets/imgs/races/{{race.name}}.jpg" alt="race">
         <h1>{{ race.name }}</h1>
@@ -32,9 +32,9 @@
               </ion-col>
             </ion-row>
         </ion-grid>
-        <p>Bônus: {{ race.bonus }}</p>
-        <button ion-button class="other-details">Habilidade da Raça</button>
+        <p [hidden]="!race.bonus">Bônus: {{ race.bonus }}</p>
+        <button [hidden]="!race.raceSkill" ion-button class="other-details">Habilidade da Raça</button>
       </ion-slide>
-    </ion-slides>
 
+    </ion-slides>
 </ion-content>

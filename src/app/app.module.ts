@@ -11,6 +11,7 @@ import { RaceService } from '../services/race/race.service';
 import { ErrorInterceptorProvider } from '../interceptors/error-interceptors';
 import { AuthService } from '../services/auth.service';
 import { StorageService } from '../services/storage.service';
+import { UserService } from '../services/user/user.service';
 
 @NgModule({
   declarations: [
@@ -32,7 +33,8 @@ import { StorageService } from '../services/storage.service';
     RaceService,
     ErrorInterceptorProvider,
     AuthService,
-    StorageService
+    StorageService,
+    UserService
   ]
 })
 export class AppModule {}
