@@ -1,0 +1,23 @@
+<ion-header>
+  <ion-navbar>
+    <ion-title>Registrar Usuário</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding>
+  <form [formGroup]="formGroup" (ngSubmit)="signupUser(); $event.preventDefault()">
+    <ion-item>
+      <ion-label stacked>Email:</ion-label>
+      <ion-input formControlName="email" type="text" placeholder="Ex: user20@gmail.com"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label stacked>Senha:</ion-label>
+      <ion-input formControlName="password" type="password" placeholder="Ex: xWtzye890"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label stacked>Confirme a senha:</ion-label>
+      <ion-input formControlName="confirmPass" type="password" placeholder="Insira a senha novamente"></ion-input>
+    </ion-item>
+    <button ion-button block type="submit">Registrar</button>
+  </form>
+</ion-content>

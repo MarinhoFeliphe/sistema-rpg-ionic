@@ -41,4 +41,8 @@ export class HomePage {
       error => {});
   }
 
+  signUp() {
+    this.navCtrl.push('SignupPage');
+  }
+
 }
