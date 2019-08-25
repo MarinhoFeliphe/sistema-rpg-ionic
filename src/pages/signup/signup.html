@@ -10,14 +10,19 @@
       <ion-label stacked>Email:</ion-label>
       <ion-input formControlName="email" type="text" placeholder="Ex: user20@gmail.com"></ion-input>
     </ion-item>
+    <p *ngIf="registeredEmail">Email já cadastrado</p>
+    <p *ngIf="formGroup.controls['email'].dirty && formGroup.controls['email'].errors">Email inválido</p>
     <ion-item>
       <ion-label stacked>Senha:</ion-label>
       <ion-input formControlName="password" type="password" placeholder="Ex: xWtzye890"></ion-input>
     </ion-item>
+    <p *ngIf="formGroup.controls['password'].dirty && formGroup.controls['password'].errors">Preenchimento obrigatório</p>
     <ion-item>
       <ion-label stacked>Confirme a senha:</ion-label>
       <ion-input formControlName="confirmPass" type="password" placeholder="Insira a senha novamente"></ion-input>
     </ion-item>
-    <button ion-button block type="submit">Registrar</button>
+    <p *ngIf="differentPassword">Os dois campos devem conter a mesma senha</p>
+    <p *ngIf="formGroup.controls['confirmPass'].dirty && formGroup.controls['confirmPass'].errors">Preenchimento obrigatório</p>
+    <button ion-button block type="submit" [disabled]="formGroup.invalid">Registrar</button>
   </form>
 </ion-content>
