@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { IonicPage, NavController, NavParams, AlertController } from 'ionic-angular';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { UserDTO } from '../../models/user.dto';
 import { UserService } from '../../services/user/user.service';
@@ -19,7 +19,8 @@ export class SignupPage {
       public navCtrl: NavController
     , public navParams: NavParams
     , public formBuilder: FormBuilder
-    , public userService: UserService) 
+    , public userService: UserService
+    , public alertController: AlertController) 
   {
       this.formGroup = this.formBuilder.group({
         email: ['', [Validators.required, Validators.email]],
@@ -56,11 +57,27 @@ export class SignupPage {
                 .insert(newUser)
                 .subscribe(response => 
                 {
-                  console.log('Inserido');
-                  console.log('response: ' + response);
+                  this.alerta(newUser);                  
                 }, error => {});
           }
 
         }, error => {});
+  }
+
+  alerta(newUser: UserDTO)
+  {
+    const alert = this.alertController.create({
+      title: 'Usuário Registrado',
+      subTitle: 'Efetue o login',
+      buttons: 
+      [{
+        text: 'Ok',
+        handler: () => {
+          this.navCtrl.setRoot('HomePage', { pNewUser : newUser });
+        }
+      }]
+    });
+
+    alert.present();
   }
 }

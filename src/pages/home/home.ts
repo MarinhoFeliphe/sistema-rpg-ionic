@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { NavController, IonicPage } from 'ionic-angular';
+import { NavController, IonicPage, NavParams } from 'ionic-angular';
 import { MenuController } from 'ionic-angular/components/app/menu-controller';
 import { CredenciaisDTO } from '../../models/credenciais.dto';
 import { AuthService } from '../../services/auth.service';
@@ -18,8 +18,21 @@ export class HomePage {
 
   constructor(
       public navCtrl: NavController
+    , public navParams: NavParams
     , public menu: MenuController
     , public auth: AuthService) {
+
+  }
+
+  ionViewDidLoad() 
+  {
+    let newUser = this.navParams.get('pNewUser');
+
+    if(newUser) 
+    {
+      this.creds.email = newUser['email'];
+      this.creds.password = newUser['password'];
+    }
 
   }
 
