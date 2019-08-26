@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { IonicPage, NavController, NavParams, AlertController } from 'ionic-angular';
 import { RaceService } from '../../services/race/race.service';
 import { RacesDTO } from '../../models/race.dto';
 import { MenuController } from 'ionic-angular/components/app/menu-controller';
@@ -17,17 +17,34 @@ export class RacesPage {
       public navCtrl: NavController
     , public navParams: NavParams
     , public raceService: RaceService
-    , public menu: MenuController) {
-  }
+    , public menu: MenuController
+    , public alertController: AlertController) {}
 
-  ionViewDidLoad() {
-
+  ionViewDidLoad() 
+  {
     this.raceService.findAll()
       .subscribe(response => {
         this.races = response; 
+        this.showAlert('Atenção', 'Clique duas vezes na imagem para escolher sua raça.')
       },
-      error => {});
-    
+      error => {}); 
   }
   
+  showAlert(title: string, subTitle: string)
+  {
+    const alert = this.alertController.create(
+    {
+      title: title,
+      subTitle: subTitle,
+      buttons: ['Ok']
+    });
+
+    alert.present();
+  }
+
+  ionSlideDoubleTap() 
+  {
+    //Não está funcionando, invesigar o motivo [25/08/2019]
+    console.log('Duplo click');
+  }
 }
