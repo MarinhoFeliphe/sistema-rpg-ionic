@@ -3,6 +3,7 @@ import { IonicPage, NavController, NavParams, AlertController } from 'ionic-angu
 import { RaceService } from '../../services/race/race.service';
 import { RacesDTO } from '../../models/race.dto';
 import { MenuController } from 'ionic-angular/components/app/menu-controller';
+import { CharacterSheet } from '../../models/character_sheet.dto';
 
 @IonicPage()
 @Component({
@@ -12,20 +13,25 @@ import { MenuController } from 'ionic-angular/components/app/menu-controller';
 export class RacesPage {
 
   races: RacesDTO[];
+  characterSheet: CharacterSheet;
 
   constructor(
       public navCtrl: NavController
     , public navParams: NavParams
     , public raceService: RaceService
     , public menu: MenuController
-    , public alertController: AlertController) {}
+    , public alertController: AlertController) 
+    {
+      this.characterSheet = new CharacterSheet();
+    }
 
   ionViewDidLoad() 
   {
     this.raceService.findAll()
-      .subscribe(response => {
+      .subscribe(response => 
+      {
         this.races = response; 
-        this.showAlert('Atenção', 'Clique no botão acima dos atributos para escolher aquela raça.')
+        this.showAlert('Atenção', 'Clique no botão acima dos atributos para escolher aquela raça.');
       },
       error => {}); 
   }
@@ -41,10 +47,11 @@ export class RacesPage {
 
     alert.present();
   }
-
-  ionSlideDoubleTap() 
+  
+  chooseRace(race: RacesDTO)
   {
-    //Não está funcionando, invesigar o motivo [25/08/2019]
-    console.log('Duplo click');
+    this.characterSheet.race = race;
+    this.navCtrl.push('ClassePage', { characterSheet :  this.characterSheet});
   }
+
 }

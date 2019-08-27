@@ -5,11 +5,11 @@
 </ion-header>
 
 <ion-content>
-    <ion-slides pager="true" mode="md" >
+    <ion-slides pager="true" mode="md">
 
       <ion-slide *ngFor="let race of races">
-        <img class="race-img" src="assets/imgs/races/{{race.name}}.jpg" alt="race">
-        <button class="btnConfirm" ion-button>
+        <img class="race-img" src="assets/imgs/races/{{race.name}}.jpg">
+        <button class="btnConfirm" ion-button (click)="chooseRace(race)">
             <ion-icon name="checkmark"></ion-icon>
         </button>
         <h1>{{ race.name }}</h1>        

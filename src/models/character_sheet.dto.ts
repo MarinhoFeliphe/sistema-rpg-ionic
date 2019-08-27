@@ -5,7 +5,8 @@ import { Attributes } from "../utils/Attributes";
 import { SkillDTO } from "./skill.dto";
 import { Equipamentos } from "../utils/Equipamentos";
 
-export interface CharacterSheet {
+export class CharacterSheet 
+{
     id: string;
     name: string;
     classe: ClasseDTO;
@@ -17,4 +18,6 @@ export interface CharacterSheet {
     manaPoints: number;
     skills: SkillDTO[];
     equipment: Equipamentos;
+
+    constructor(){}
 }

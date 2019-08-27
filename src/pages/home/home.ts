@@ -36,15 +36,18 @@ export class HomePage {
 
   }
 
-  ionViewWillEnter() {
+  ionViewWillEnter() 
+  {
     this.menu.swipeEnable(false);
   }
 
-  ionViewDidLeave() {
+  ionViewDidLeave() 
+  {
     this.menu.swipeEnable(true);
   }
 
-  login() {
+  login() 
+  {
     this.auth
       .authenticate(this.creds)
       .subscribe(response => {
@@ -54,7 +57,8 @@ export class HomePage {
       error => {});
   }
 
-  signUp() {
+  signUp() 
+  {
     this.navCtrl.push('SignupPage');
   }
 
