@@ -5,11 +5,26 @@ page-races {
     }
 
     .race-img {
-        width: 220px;
+        width: 190px;
         height: 280px;
         position: relative;
         right: 50px;
         top: 30px;
+    }
+
+    .btnConfirm
+    {
+        position: relative;
+        bottom: 220px;
+        left: 37px;
+        border-radius: 25px;
+        height: 30px;
+        padding: 5px;
+
+        > .button-inner > .icon-md
+        {
+            font-size: 1.9em;
+        }
     }
 
     .grid {

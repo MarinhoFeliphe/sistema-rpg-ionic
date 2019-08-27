@@ -25,7 +25,7 @@ export class RacesPage {
     this.raceService.findAll()
       .subscribe(response => {
         this.races = response; 
-        this.showAlert('Atenção', 'Clique duas vezes na imagem para escolher sua raça.')
+        this.showAlert('Atenção', 'Clique no botão acima dos atributos para escolher aquela raça.')
       },
       error => {}); 
   }
