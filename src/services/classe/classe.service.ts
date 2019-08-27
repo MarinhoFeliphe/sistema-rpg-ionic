@@ -2,12 +2,12 @@ import { Injectable } from "@angular/core";
 import { HttpClient } from "@angular/common/http";
 import { API_CONFIG } from "../../config/api.config";
 import { Observable } from "rxjs/Rx";
-import { RacesDTO } from "../../models/race.dto";
+import { ClasseDTO } from "../../models/classe.dto";
 
 @Injectable()
-export class RaceService 
+export class ClasseService
 {
     constructor(public http: HttpClient) {}
 
-    findAll = () : Observable<RacesDTO[]>  => this.http.get<RacesDTO[]>(`${API_CONFIG.baseUrl}/races`);
+    findAll = () : Observable<ClasseDTO[]> => this.http.get<ClasseDTO[]>(`${API_CONFIG.baseUrl}/classes`);
 }
