@@ -1,18 +1,26 @@
-<ion-header translucent>
+<ion-header>
   <ion-navbar>
     <ion-title>Escolha uma Classe</ion-title>
   </ion-navbar>
 </ion-header>
 
-<ion-content fullscreen>
-  <ion-card>
+<ion-content>
+
+  <ion-card *ngFor="let classe of classes">
     <img src="assets/imgs/classes/Ladino.png" />
     <ion-card-header>
-      <ion-card-title style="text-align: center">Ladino</ion-card-title>
+      <ion-card-title style="text-align: center">{{ classe.name }}</ion-card-title>
     </ion-card-header>
     <ion-card-content>
-      <h3 style="text-align: center">Bônus: +1 For +1 Agi</h3>
-      <p>Founded in 1829 on an isthmus between Lake Monona and Lake Mendota, Madison was named the capital of the Wisconsin Territory in 1836.</p>
+      <p>Proeficiência: {{ classe.proficiency }}</p>
+      <div class="atributes">
+        <h3 *ngIf="classe.attributes.agility">+{{ classe.attributes.agility }} Agi</h3>
+        <h3 *ngIf="classe.attributes.strength">+{{ classe.attributes.strength }} For</h3>
+        <h3 *ngIf="classe.attributes.intelligence">+{{ classe.attributes.intelligence }} Int</h3>
+        <h3 *ngIf="classe.attributes.will">+{{ classe.attributes.will }} Von</h3>
+      </div>
+      <p>{{ classe.description }}</p>
     </ion-card-content>
   </ion-card>
+
 </ion-content>
