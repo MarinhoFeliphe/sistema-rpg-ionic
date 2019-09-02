@@ -7,7 +7,7 @@
 <ion-content>
 
   <ion-card *ngFor="let classe of classes">
-    <img src="assets/imgs/classes/Ladino.png" />
+    <img src="assets/imgs/classes/{{classe.name}}.jpg" />
     <ion-card-header>
       <ion-card-title style="text-align: center">{{ classe.name }}</ion-card-title>
     </ion-card-header>
@@ -16,7 +16,7 @@
       <div class="atributes">
         <h3 *ngIf="classe.attributes.agility">+{{ classe.attributes.agility }} Agi</h3>
         <h3 *ngIf="classe.attributes.strength">+{{ classe.attributes.strength }} For</h3>
-        <h3 *ngIf="classe.attributes.intelligence">+{{ classe.attributes.intelligence }} Int</h3>
+        <h3 *ngIf="classe.attributes.intelligence">+{{ classe.attributes.intelligence}} Int</h3>
         <h3 *ngIf="classe.attributes.will">+{{ classe.attributes.will }} Von</h3>
       </div>
       <p>{{ classe.description }}</p>
