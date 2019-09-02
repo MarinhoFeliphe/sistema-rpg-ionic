@@ -15,16 +15,10 @@ page-races {
     .btnConfirm
     {
         position: relative;
-        bottom: 220px;
-        left: 37px;
+        bottom: 83px;
+        left: 2px;
         border-radius: 25px;
         height: 30px;
-        padding: 5px;
-
-        > .button-inner > .icon-md
-        {
-            font-size: 1.9em;
-        }
     }
 
     .grid {
@@ -46,9 +40,11 @@ page-races {
         bottom: 80px;
     }
 
-    p {
+    .skillOrBonus 
+    {
         position: relative;
         bottom: 100px;
+        text-align: center;
     }
 
     h1 {

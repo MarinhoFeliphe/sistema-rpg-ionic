@@ -1,17 +1,8 @@
-<ion-header>
-  <ion-navbar>
-    <ion-title style="text-align: center">Escolha uma Raça</ion-title>
-  </ion-navbar>
-</ion-header>
-
 <ion-content>
     <ion-slides pager="true" mode="md">
 
       <ion-slide *ngFor="let race of races">
-        <img class="race-img" src="assets/imgs/races/{{race.name}}.jpg">
-        <button class="btnConfirm" ion-button (click)="chooseRace(race)">
-            <ion-icon name="checkmark"></ion-icon>
-        </button>
+        <img class="race-img" src="assets/imgs/races/{{race.name}}.jpg">      
         <h1>{{ race.name }}</h1>        
         <ion-grid class="grid">
             <ion-row>
@@ -35,8 +26,17 @@
               </ion-col>
             </ion-row>
         </ion-grid>        
-        <p [hidden]="!race.bonus">Bônus: {{ race.bonus }}</p>
-        <button [hidden]="!race.raceSkill" (click)="showAlert(race.raceSkill.feature, race.raceSkill.description)" ion-button class="other-details">Habilidade da Raça</button>
+        <p class="skillOrBonus" [hidden]="!race.bonus">Bônus: {{ race.bonus }}</p>
+        <ion-item class="skillOrBonus" [hidden]="!race.raceSkill">
+          <ion-textarea
+            rows="6" 
+            cols="20"
+            disabled          
+            readonly
+            value="{{ (race.raceSkill) ? race.raceSkill.description : '' }}">          
+          </ion-textarea>
+        </ion-item>
+        <button class="btnConfirm" ion-button (click)="chooseRace(race)">Confirmar Raça</button>     
       </ion-slide>
 
     </ion-slides>
