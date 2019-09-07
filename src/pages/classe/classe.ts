@@ -31,8 +31,13 @@ export class ClassePage {
       .subscribe(response => 
       {
         this.classes = response;
-        console.log(this.classes);
       },
       error => {});
+  }
+
+  chooseClasse(classe: ClasseDTO)
+  {
+    this.characterSheet.classe = classe;
+    console.log(this.characterSheet);
   }
 }

@@ -6,21 +6,23 @@
 
 <ion-content>
 
-  <ion-card *ngFor="let classe of classes">
-    <img src="assets/imgs/classes/{{classe.name}}.jpg" />
-    <ion-card-header>
-      <ion-card-title style="text-align: center">{{ classe.name }}</ion-card-title>
-    </ion-card-header>
-    <ion-card-content>
-      <p>Proeficiência: {{ classe.proficiency }}</p>
-      <div class="atributes">
-        <h3 *ngIf="classe.attributes.agility">+{{ classe.attributes.agility }} Agi</h3>
-        <h3 *ngIf="classe.attributes.strength">+{{ classe.attributes.strength }} For</h3>
-        <h3 *ngIf="classe.attributes.intelligence">+{{ classe.attributes.intelligence}} Int</h3>
-        <h3 *ngIf="classe.attributes.will">+{{ classe.attributes.will }} Von</h3>
-      </div>
-      <p>{{ classe.description }}</p>
-    </ion-card-content>
-  </ion-card>
+  <button *ngFor="let classe of classes" (click)="chooseClasse(classe)">
+    <ion-card>
+      <img src="assets/imgs/classes/{{classe.name}}.jpg" />
+      <ion-card-header>
+        <ion-card-title style="text-align: center">{{ classe.name }}</ion-card-title>
+      </ion-card-header>
+      <ion-card-content>
+        <p>Proeficiência: {{ classe.proficiency }}</p>
+        <div class="atributes">
+          <h3 *ngIf="classe.attributes.agility">+{{ classe.attributes.agility }} Agi</h3>
+          <h3 *ngIf="classe.attributes.strength">+{{ classe.attributes.strength }} For</h3>
+          <h3 *ngIf="classe.attributes.intelligence">+{{ classe.attributes.intelligence}} Int</h3>
+          <h3 *ngIf="classe.attributes.will">+{{ classe.attributes.will }} Von</h3>
+        </div>
+        <p>{{ classe.description }}</p>
+      </ion-card-content>
+    </ion-card>
+  </button>
 
 </ion-content>

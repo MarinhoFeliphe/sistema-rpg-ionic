@@ -31,7 +31,7 @@ export class RacesPage {
       .subscribe(response => 
       {
         this.races = response; 
-        this.showAlert('Atenção', 'Todas as raças que tem habilidades a mesma é do tipo Suporte');
+        this.showAlert('Atenção', 'Todas as habilidades de raça são do tipo Suporte');
       },
       error => {}); 
   }
