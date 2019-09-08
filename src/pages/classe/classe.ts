@@ -38,6 +38,6 @@ export class ClassePage {
   chooseClasse(classe: ClasseDTO)
   {
     this.characterSheet.classe = classe;
-    console.log(this.characterSheet);
+    this.navCtrl.push('SkillPage', { characterSheet :  this.characterSheet});
   }
 }

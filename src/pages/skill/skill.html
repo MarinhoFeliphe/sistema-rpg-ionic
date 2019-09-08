@@ -1,0 +1,20 @@
+<ion-header>
+  <ion-navbar>
+    <ion-title>Escolha uma Habilidade</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding>
+
+  <ion-item *ngFor="let skill of skills">
+    <ion-avatar slot="start">
+      <img src="assets/imgs/classes/Ladino.png">
+    </ion-avatar>
+    <ion-label>
+      <h2>{{ skill.name }}</h2>
+      <h3>{{ skill.feature }}</h3>
+      <p>{{ skill.description }}</p>
+    </ion-label>
+  </ion-item>
+
+</ion-content>
