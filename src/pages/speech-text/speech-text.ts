@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { NavController, Platform, IonicPage} from 'ionic-angular';
-import { SpeechRecognition } from '@ionic-native/speech-recognition/ngx';
+import { SpeechRecognition } from '@ionic-native/speech-recognition';
 import { ChangeDetectorRef } from '@angular/core';
 
 @IonicPage()
@@ -13,7 +13,11 @@ export class SpeechTextPage {
   matches: String[];
   isRecording = false;
  
-  constructor(public navCtrl: NavController, private speechRecognition: SpeechRecognition, private plt: Platform, private cd: ChangeDetectorRef) { }
+  constructor(
+      public navCtrl: NavController
+    , public speechRecognition: SpeechRecognition
+    , public plt: Platform
+    , public cd: ChangeDetectorRef) { }
  
   isIos() {
     return this.plt.is('ios');
@@ -31,13 +35,15 @@ export class SpeechTextPage {
         if (!hasPermission) {
           this.speechRecognition.requestPermission();
         }
+      }).catch(e => {
+        alert(e);
       });
   }
  
   startListening() {
-    let options = {
+    /*let options = {
       language: 'en-US'
-    }
+    }*/
     this.speechRecognition.startListening().subscribe(matches => {
       this.matches = matches;
       this.cd.detectChanges();
