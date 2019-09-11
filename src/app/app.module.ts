@@ -14,6 +14,7 @@ import { StorageService } from '../services/storage.service';
 import { UserService } from '../services/user/user.service';
 import { AuthInterceptorProvider } from '../interceptors/auth-interceptors';
 import { ClasseService } from '../services/classe/classe.service';
+import { SpeechRecognition } from '@ionic-native/speech-recognition/ngx';
 
 @NgModule({
   declarations: [
@@ -31,6 +32,7 @@ import { ClasseService } from '../services/classe/classe.service';
   providers: [
     StatusBar,
     SplashScreen,
+    SpeechRecognition,
     {provide: ErrorHandler, useClass: IonicErrorHandler},
     RaceService,
     AuthInterceptorProvider,

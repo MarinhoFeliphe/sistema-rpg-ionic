@@ -62,4 +62,9 @@ export class HomePage {
     this.navCtrl.push('SignupPage');
   }
 
+  speechToText()
+  {
+    this.navCtrl.push('SpeechTextPage');
+  }
+
 }
