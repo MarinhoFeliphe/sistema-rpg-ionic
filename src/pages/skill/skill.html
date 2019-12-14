@@ -1,19 +1,23 @@
 <ion-header>
   <ion-navbar>
-    <ion-title>Escolha uma Habilidade</ion-title>
+    <ion-title>Escolha 3 Habilidades</ion-title>
   </ion-navbar>
 </ion-header>
 
 <ion-content padding>
 
-  <button *ngFor="let skill of skills" class="btn-card">
-    <ion-card class="skill-card">
+  <button *ngFor="let skill of skills" (click)="chooseSkill(skill)" class="btn-card">
+    <ion-card class="skill-card" onclick-skill id="{{ skill.id }}">
       <ion-card-header>
         <ion-card-title style="text-align: center">{{ skill.name }}</ion-card-title>
       </ion-card-header>
       <ion-card-content>
         <p>{{ skill.feature }}</p>
+        <p *ngIf="skill.mana">Mana: {{ skill.mana }}</p>
+        <p *ngIf="skill.requirements">Requisito: {{ skill.requirements }}</p>
         <p class="description">{{ skill.description }}</p>
+        <p *ngIf="skill.especial">Especial</p>
+        <p *ngIf="skill.especial">{{ skill.especial }}</p>
       </ion-card-content>
     </ion-card>
   </button>

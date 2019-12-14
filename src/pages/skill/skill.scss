@@ -9,4 +9,23 @@ page-skill {
     {
         color: #939393;
     }
+
+    .check-skill
+    {
+        background: #488aff !important;        
+        .card-title
+        {
+            color: white;
+        }
+
+        p
+        {
+           color: white; 
+        }
+    }
+
+    .skill-card
+    {
+        background: #E3E8F1;
+    }
 }
