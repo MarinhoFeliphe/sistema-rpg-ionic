@@ -24,6 +24,23 @@ page-skill {
         }
     }
 
+    .btn-advanced-skills
+    {
+        padding: 10px 0px 0px 0px;
+        .fab-md
+        {
+            background: #f53d3d;
+        }
+                
+    }
+
+    .card-title
+    {
+        max-width: 287px;
+        white-space: normal;
+        display: block;        
+    }
+
     .skill-card
     {
         background: #E3E8F1;

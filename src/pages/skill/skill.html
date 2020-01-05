@@ -1,23 +1,37 @@
 <ion-header>
   <ion-navbar>
-    <ion-title>Escolha 3 Habilidades</ion-title>
+    <ion-title>Selecione 3 Habilidades</ion-title>
   </ion-navbar>
 </ion-header>
 
 <ion-content padding>
 
-  <button *ngFor="let skill of skills" (click)="chooseSkill(skill)" class="btn-card">
-    <ion-card class="skill-card" onclick-skill id="{{ skill.id }}">
+  <ion-fab top right edge>
+    <button ion-fab mini [disabled]="chosenSkills.length != 3"><ion-icon name="share-alt"></ion-icon></button>
+  </ion-fab>
+
+  <ion-fab top right class="btn-advanced-skills">
+    <button 
+      ion-fab mini
+      disabled="true">
+      <ion-icon name="flash"></ion-icon>
+    </button>
+  </ion-fab>
+
+  <button *ngFor="let skill of skills" (click)="chooseSkill(skill)" [disabled]="skill.requirements" class="btn-card" id="{{ skill.id }}">
+    <ion-card class="skill-card" onclick-skill>
       <ion-card-header>
-        <ion-card-title style="text-align: center">{{ skill.name }}</ion-card-title>
+        <ion-card-title class="card-title">{{ skill.name }}</ion-card-title>
       </ion-card-header>
       <ion-card-content>
         <p>{{ skill.feature }}</p>
         <p *ngIf="skill.mana">Mana: {{ skill.mana }}</p>
-        <p *ngIf="skill.requirements">Requisito: {{ skill.requirements }}</p>
+        <p *ngIf="skill.requirements">Requisito: {{ skill.requirements | formatRequirement }}</p>
         <p class="description">{{ skill.description }}</p>
         <p *ngIf="skill.especial">Especial</p>
         <p *ngIf="skill.especial">{{ skill.especial }}</p>
+        <p *ngIf="skill.example">Exemplo</p>
+        <p *ngIf="skill.example">{{ skill.example }}</p>
       </ion-card-content>
     </ion-card>
   </button>
