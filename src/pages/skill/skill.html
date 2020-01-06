@@ -18,7 +18,12 @@
     </button>
   </ion-fab>
 
-  <button *ngFor="let skill of skills" (click)="chooseSkill(skill)" [disabled]="skill.requirements" class="btn-card" id="{{ skill.id }}">
+  <button 
+  *ngFor="let skill of skills" 
+  (click)="chooseSkill(skill)" 
+  [disabled]="skill.requirements && skill.requirements.type == 'Exigency'" 
+  class="btn-card" 
+  id="{{ skill.id }}">
     <ion-card class="skill-card" onclick-skill>
       <ion-card-header>
         <ion-card-title class="card-title">{{ skill.name }}</ion-card-title>

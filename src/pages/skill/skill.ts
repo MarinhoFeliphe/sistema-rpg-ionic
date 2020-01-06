@@ -28,7 +28,10 @@ export class SkillPage {
     this.characterSheet = this.navParams.get('characterSheet');
     this.skills = this.sortSkills(this.characterSheet.classe.skills);
     this.skillsWithRequirements = this.skills.filter(skill => skill['requirements'] != null);
-    this.skillService.setSkillWithRequirements(this.skillsWithRequirements);
+    
+    if(this.skillsWithRequirements) {
+      this.skillService.setSkillWithRequirements(this.skillsWithRequirements);
+    }
   }
 
   chooseSkill = (skill: SkillDTO) => this.skillService.skillValidation(skill, this.chosenSkills);
