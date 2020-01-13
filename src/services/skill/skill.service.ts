@@ -50,7 +50,7 @@ export class SkillService
         
         if(chosenSkills.length > 3) {
             chosenSkills.splice(indexOfSkill, 1);
-            this.showAlert('Atenção','Você já escolheu 3 habilidades, deseja avançar para a escolha dos equipamentos?');
+            this.showAlert('Atenção','Você deve escolher apenas 3 habilidades.');
         } else {
             this.checkSkillRequirement(skill, chosenSkills, skillExistsInArray);
         }
@@ -158,25 +158,15 @@ export class SkillService
     {
         const alert = this.alertController.create(
         {
-        title: title,
-        subTitle: subTitle,
-        buttons: [
-            {
-                text: 'Sim',
-                handler: data => {
-                    console.log('Sim clicked');
-                }
-            },
-            {
-                text: 'Não',
-                handler: data => {
-                    console.log('Não clicked');
-                }
-            }
-        ]
+            title: title,
+            subTitle: subTitle,
+            buttons: ['Ok']
         });
 
         alert.present();
     }
 
+    getChosenSkills(): SkillDTO[] {
+        return this.chosenSkills;
+    }
 }

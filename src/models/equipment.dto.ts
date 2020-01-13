@@ -6,4 +6,6 @@ export class EquipmentDTO {
     quantidade: string;
     especial: string;
     preco: string;
+    conjunto: string;
+    defesa: number;
 }

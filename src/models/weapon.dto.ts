@@ -13,4 +13,6 @@ export class WeaponDTO implements EquipmentDTO {
     fn: number;
     grupo: string;
     observacao: string;
+    conjunto: string;
+    defesa: number;
 }

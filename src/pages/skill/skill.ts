@@ -37,4 +37,9 @@ export class SkillPage {
   chooseSkill = (skill: SkillDTO) => this.skillService.skillValidation(skill, this.chosenSkills);
 
   sortSkills = (skills: SkillDTO[]) => skills.sort((a, b) => (a.feature < b.feature) ? 1 : -1);
+
+  chooseEquipments() {
+    this.characterSheet.skills = this.skillService.getChosenSkills();
+    this.navCtrl.push("StorePage", { characterSheet :  this.characterSheet});
+  }
 }

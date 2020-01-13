@@ -15,4 +15,6 @@ export class PotionDTO implements EquipmentDTO {
     manaPoints: number;
     skills: SkillDTO[];
     equipment: Equipamentos;
+    conjunto: string;
+    defesa: number;
 }

@@ -7,7 +7,9 @@
 <ion-content padding>
 
   <ion-fab top right edge>
-    <button ion-fab mini [disabled]="chosenSkills.length != 3"><ion-icon name="share-alt"></ion-icon></button>
+    <button ion-fab mini [disabled]="chosenSkills.length != 3" (click)="chooseEquipments()">
+      <ion-icon name="share-alt"></ion-icon>
+    </button>
   </ion-fab>
 
   <ion-fab top right class="btn-advanced-skills">
