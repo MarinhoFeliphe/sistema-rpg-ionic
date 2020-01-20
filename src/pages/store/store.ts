@@ -13,6 +13,7 @@ export class StorePage {
 
   private characterSheet: CharacterSheet;
   private weapons: WeaponDTO[] = [];
+  public weaponSet: string = "Armas Corporais";
 
   constructor(public navCtrl: NavController
             , public navParams: NavParams
@@ -20,7 +21,13 @@ export class StorePage {
 
   ionViewDidLoad() {
     this.characterSheet = this.navParams.get('characterSheet');
-    this.storeService.findWeapons().subscribe(weapons => this.weapons = weapons);
+    this.storeService.findWeapons().subscribe(weapons => {
+      this.weapons = weapons
+      console.log(this.weapons);
+    });
   }
 
+  loadList(conjunto: string) {
+    this.weaponSet = conjunto;
+  }
 }

@@ -1,3 +1,53 @@
 page-store {
 
+    .nav-bar-market
+    {
+        height: 64px;
+        border-radius: 38px;
+        background: #ffffff75;
+        left: 0;
+        bottom: 60px;
+        position: absolute;
+    }
+
+    .option-nav-bar
+    {
+        border-radius: 25px;
+        height: 45px;
+        width: 51px;
+        margin: 0.4rem 7px 13px 4px;
+        background-color: transparent;
+    }
+
+    .content-nav-bar
+    {
+        padding: 6px 8px;
+    }
+
+    .distance-img
+    {
+        min-height: 31px; 
+    }
+
+    .armour-img
+    {
+        min-width: 22px;
+    }
+
+    .more-button
+    {
+        span
+        {
+            color: black;
+        }
+    }
+
+    .principal-info
+    {
+        display: flex;        
+
+        p {            
+            margin: 10px 5px 10px 10px;
+        }
+    }
 }
