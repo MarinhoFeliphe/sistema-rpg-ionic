@@ -4,58 +4,178 @@
   </ion-navbar>
 </ion-header>
 
-<ion-content padding>
+<ion-content>
 
   <ion-fab top right edge>
-    <button ion-fab mini>
-      <ion-icon name="cart"></ion-icon>
+    <button ion-fab mini style="background-color: #607D8B;">
+      <img src="assets/imgs/market/bag.png">
     </button>
   </ion-fab>
 
-  <ion-title style="text-align: center;">{{ weaponSet }}</ion-title>
+  <ion-title style="text-align: center;  margin: 10px 0px 0px;">Equipamentos de Proteção</ion-title>
+  <ion-slides pager="true" class="set-of-offers">
+    <ion-slide *ngFor="let weapon of protectiveEquipment" class="slide-offers">
+      <ion-card class="offer">
+        <ion-card-header>
+          <ion-card-title style="text-align: center; white-space: normal; font-size: 1.6rem;">{{ weapon.nome }}</ion-card-title>
+        </ion-card-header>
+        <ion-card class="principal-info-protective-equipment">
+          <ion-card-content style="padding: 4px 8px 0px;">
+            <div style="display: inline-flex;" *ngIf="weapon.defesa">
+              <img src="assets/imgs/market/armour.svg" class="icon-body-weapons">
+              <p>{{ weapon.defesa }}</p>
+            </div>
+            <div style="display: inline-flex;" *ngIf="weapon.fn">
+              <img src="assets/imgs/market/fn.png" class="icon-body-weapons">
+              <p>{{ weapon.fn }}</p>
+            </div>
+            <div style="display: inline-flex;" *ngIf="weapon.preco">
+              <img src="assets/imgs/market/gold.png" class="icon-body-weapons">
+              <p>{{ weapon.preco }}</p>
+            </div>
+          </ion-card-content>
+        </ion-card>
+        <ion-card *ngIf="weapon.observacao" class="card-observation">
+          <ion-card-content>
+            <p style="text-align: center">{{ weapon.observacao }}</p>
+          </ion-card-content>
+        </ion-card>
+      </ion-card>
+    </ion-slide>
+  </ion-slides>
 
-  <ion-card *ngFor="let weapon of weapons">
-    <ion-card-header>
-      <ion-card-title style="text-align: center">{{ weapon.nome }}</ion-card-title>
-    </ion-card-header>
-    <ion-card-content>
-      <p style="text-align: center">{{ weapon.tipo }}</p>
-    </ion-card-content>
-    <ion-card>
-      <ion-card-content class="principal-info">
-        <p>Dano: {{ weapon.dano }}</p>
-        <p>Fn: {{ weapon.fn }}</p>
-        <p>Valor: {{ weapon.preco }}</p>
-        <p>Disponível: {{ weapon.quantidade }}</p>
-      </ion-card-content>
-    </ion-card>
-    <ion-card *ngIf="weapon.observacao">
-      <ion-card-content>
-        <p style="text-align: center">{{ weapon.observacao }}</p>
-      </ion-card-content>
-    </ion-card>
-  </ion-card>
+  <ion-title style="text-align: center;">Armas de Distância</ion-title>
+  <ion-slides pager="true" class="set-of-offers">
+    <ion-slide *ngFor="let weapon of distanceWeapons" class="slide-offers">
+      <ion-card class="offer">
+        <div style="display: flex;">
+          <div style="width: 57%;">
+            <ion-card-header>
+              <ion-card-title style="text-align: center; white-space: normal; font-size: 1.6rem;">{{ weapon.nome }}</ion-card-title>
+            </ion-card-header>
+            <ion-card-content *ngIf="weapon.tipo">
+              <p style="text-align: center; color: #fff;">{{ weapon.tipo }}</p>
+            </ion-card-content>
+          </div>
+          <ion-card class="principal-info-body-weapons">
+            <ion-card-content style="display: table-caption; padding: 7px 8px;">
+              <div style="display: inline-flex;">
+                <img src="assets/imgs/market/armas.jpg" class="icon-body-weapons">
+                <p *ngIf="weapon.dano">{{ weapon.dano }}</p>
+              </div>
+              <div style="display: inline-flex;">
+                <img src="assets/imgs/market/fn.png" class="icon-body-weapons">
+                <p *ngIf="weapon.fn">{{ weapon.fn }}</p>
+              </div>
+              <div style="display: inline-flex;">
+                <img src="assets/imgs/market/gold.png" class="icon-body-weapons">
+                <p>{{ weapon.preco }}</p>
+              </div>
+            </ion-card-content>
+          </ion-card>
+        </div>
+        <ion-card *ngIf="weapon.observacao" class="card-observation">
+          <ion-card-content>
+            <p style="text-align: center">{{ weapon.observacao }}</p>
+          </ion-card-content>
+        </ion-card>
+      </ion-card>
+    </ion-slide>
+  </ion-slides>
 
+  <ion-title style="text-align: center;">Itens para Conjuradores</ion-title>
+  <ion-slides pager="true" class="set-of-offers">
+    <ion-slide *ngFor="let weapon of spellcasterItems" class="slide-offers">
+      <ion-card class="offer">
+        <div style="display: flex;">
+          <div style="width: 74%;">
+            <ion-card-header>
+              <ion-card-title style="text-align: center; white-space: normal; font-size: 1.6rem;">{{ weapon.nome }}</ion-card-title>
+            </ion-card-header>
+          </div>
+          <ion-card class="principal-info-spellcaster-items">
+            <ion-card-content style="padding: 3px 0px 0px 0px;">
+              <div style="display: inline-flex;">
+                <img src="assets/imgs/market/gold.png" class="icon-body-weapons">
+                <p>{{ weapon.preco }}</p>
+              </div>
+            </ion-card-content>
+          </ion-card>
+        </div>
+        <ion-card *ngIf="weapon.descricao" class="card-observation">
+          <ion-card-content>
+            <p style="text-align: center">{{ weapon.descricao }}</p>
+          </ion-card-content>
+        </ion-card>
+      </ion-card>
+    </ion-slide>
+  </ion-slides>
+
+  <ion-title style="text-align: center;">Outros Itens</ion-title>
+  <ion-slides pager="true" class="set-of-offers">
+    <ion-slide *ngFor="let weapon of otherItems" class="slide-offers">
+      <ion-card class="offer">
+        <div style="display: flex;">
+          <div style="width: 74%;">
+            <ion-card-header>
+              <ion-card-title style="text-align: center; white-space: normal; font-size: 1.6rem;">{{ weapon.nome }}</ion-card-title>
+            </ion-card-header>
+          </div>
+          <ion-card class="principal-info-spellcaster-items">
+            <ion-card-content style="padding: 3px 0px 0px 0px;">
+              <div style="display: inline-flex;">
+                <img src="assets/imgs/market/gold.png" class="icon-body-weapons">
+                <p>{{ weapon.preco }}</p>
+              </div>
+            </ion-card-content>
+          </ion-card>
+        </div>
+        <ion-card *ngIf="weapon.descricao" class="card-observation">
+          <ion-card-content>
+            <p style="text-align: center">{{ weapon.descricao }}</p>
+          </ion-card-content>
+        </ion-card>
+      </ion-card>
+    </ion-slide>
+  </ion-slides>
+
+  <ion-title style="text-align: center;">Armas Coporais</ion-title>
+
+  <ion-slides pager="false" class="set-of-offers">
+    <ion-slide *ngFor="let weapon of bodyWeapons" class="slide-offers">
+      <ion-card class="offer">        
+        <div style="display: flex;">
+          <div style="width: 57%;">
+            <ion-card-header>
+              <p style="text-align: center; white-space: normal; font-size: 1.6rem;">{{ weapon.nome }}</p>
+            </ion-card-header>
+            <ion-card-content *ngIf="weapon.tipo">
+              <p style="text-align: center; color: #fff;">{{ weapon.tipo }}</p>
+            </ion-card-content>
+          </div>
+          <ion-card class="principal-info-body-weapons">
+            <ion-card-content style="display: table-caption; padding: 7px 8px;">
+              <div style="display: inline-flex;">
+                <img src="assets/imgs/market/armas.jpg" class="icon-body-weapons">
+                <p *ngIf="weapon.dano">{{ weapon.dano }}</p>
+              </div>
+              <div style="display: inline-flex;">
+                <img src="assets/imgs/market/fn.png" class="icon-body-weapons">
+                <p *ngIf="weapon.fn">{{ weapon.fn }}</p>
+              </div>
+              <div style="display: inline-flex;">
+                <img src="assets/imgs/market/gold.png" class="icon-body-weapons">
+                <p>{{ weapon.preco }}</p>
+              </div>
+            </ion-card-content>
+          </ion-card>
+        </div>
+        <ion-card *ngIf="weapon.observacao" class="card-observation">
+          <ion-card-content>
+            <p style="text-align: center">{{ weapon.observacao }}</p>
+          </ion-card-content>
+        </ion-card>
+      </ion-card>
+    </ion-slide>
+  </ion-slides>
 </ion-content>
-
-<ion-footer>
-  <ion-card class="nav-bar-market">
-    <ion-card-content class="content-nav-bar">
-      <button class="option-nav-bar" (click)="loadList('Armas Corporais')" ion-button>
-        <img src="assets/imgs/market/sword.png">
-      </button>
-      <button class="option-nav-bar" (click)="loadList('Equipamentos de Proteção')" ion-button>
-        <img class="armour-img" src="assets/imgs/market/armour.svg">
-      </button>
-      <button class="option-nav-bar" (click)="loadList('Armas de Distância')" ion-button>
-        <img class="distance-img" src="assets/imgs/market/distancia.svg">
-      </button>
-      <button class="option-nav-bar" (click)="loadList('Itens para Conjuradores')" ion-button>
-        <img src="assets/imgs/market/magic.png">
-      </button>
-      <button class="option-nav-bar more-button" (click)="loadList('Outros Itens')" ion-button>
-        <ion-icon name="more"></ion-icon>
-      </button>
-    </ion-card-content>
-  </ion-card>
-</ion-footer>

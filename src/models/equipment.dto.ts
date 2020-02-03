@@ -8,4 +8,5 @@ export class EquipmentDTO {
     preco: string;
     conjunto: string;
     defesa: number;
+    descricao: string;
 }

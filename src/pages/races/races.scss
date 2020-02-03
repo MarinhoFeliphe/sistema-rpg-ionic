@@ -9,13 +9,13 @@ page-races {
         height: 280px;
         position: relative;
         right: 50px;
-        top: 30px;
+        top: 68px;
     }
 
     .btnConfirm
     {
         position: relative;
-        bottom: 83px;
+        bottom: 0px;
         left: 2px;
         border-radius: 25px;
         height: 30px;
@@ -35,11 +35,6 @@ page-races {
         background: #f8f8f8;        
     }
 
-    .other-details {
-        position: relative;
-        bottom: 80px;
-    }
-
     .skillOrBonus 
     {
         position: relative;
@@ -49,14 +44,6 @@ page-races {
 
     h1 {
         position: relative;
-        top: 25px; 
-    }
-
-    .align-area
-    {
-        .text-input
-        {
-            text-align: center;
-        }
+        top: 45px; 
     }
 }

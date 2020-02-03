@@ -1,44 +1,27 @@
-<ion-content>
-    <ion-slides pager="true" mode="md">
-
+<ion-content padding>
+    <ion-slides pager="true" style="height: 93%;">
       <ion-slide *ngFor="let race of races">
         <img class="race-img" src="assets/imgs/races/{{race.name}}.jpg">      
         <h1>{{ race.name }}</h1>        
         <ion-grid class="grid">
             <ion-row>
-              <ion-col>
-                For: {{ race.attributes.strength }}
-              </ion-col>              
+              <ion-col>For: {{ race.attributes.strength }}</ion-col>              
             </ion-row>
             <ion-row>
-              <ion-col>
-                Agi: {{ race.attributes.agility }}
-              </ion-col>                  
+              <ion-col>Agi: {{ race.attributes.agility }}</ion-col>                  
             </ion-row>
             <ion-row>
-              <ion-col>
-                Int: {{ race.attributes.intelligence }}
-              </ion-col>                  
+              <ion-col>Int: {{ race.attributes.intelligence }}</ion-col>                  
             </ion-row>
             <ion-row>
-              <ion-col>
-                Von: {{ race.attributes.will }}
-              </ion-col>
+              <ion-col>Von: {{ race.attributes.will }}</ion-col>
             </ion-row>
         </ion-grid>        
-        <p class="skillOrBonus" [hidden]="!race.bonus">Bônus: {{ race.bonus }}</p>
-        <ion-item class="skillOrBonus" [hidden]="!race.raceSkill">
-          <ion-textarea
-            class="align-area"
-            rows="6" 
-            cols="20"
-            disabled          
-            readonly
-            value="{{ (race.raceSkill) ? race.raceSkill.description : '' }}">          
-          </ion-textarea>
-        </ion-item>
-        <button class="btnConfirm" ion-button (click)="chooseRace(race)">Confirmar Raça</button>     
+        <p class="skillOrBonus" [hidden]="!race.raceSkill">{{ (race.raceSkill) ? race.raceSkill.description : '' }}</p>
+        <p class="skillOrBonus" *ngIf="race.bonus" [hidden]="!race.bonus">Bônus: {{ race.bonus }}</p>
       </ion-slide>
-
-    </ion-slides>
+    </ion-slides>  
+    <div style="text-align: center;">
+      <button class="btnConfirm" ion-button (click)="chooseRace(race)">Confirmar Raça</button>
+    </div>
 </ion-content>

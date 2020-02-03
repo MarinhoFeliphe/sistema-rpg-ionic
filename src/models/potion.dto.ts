@@ -17,4 +17,5 @@ export class PotionDTO implements EquipmentDTO {
     equipment: Equipamentos;
     conjunto: string;
     defesa: number;
+    descricao: string;
 }

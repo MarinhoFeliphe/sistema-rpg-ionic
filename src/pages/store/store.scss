@@ -1,53 +1,62 @@
 page-store {
 
-    .nav-bar-market
-    {
-        height: 64px;
-        border-radius: 38px;
-        background: #ffffff75;
-        left: 0;
-        bottom: 60px;
-        position: absolute;
-    }
-
-    .option-nav-bar
-    {
-        border-radius: 25px;
-        height: 45px;
-        width: 51px;
-        margin: 0.4rem 7px 13px 4px;
-        background-color: transparent;
-    }
-
-    .content-nav-bar
-    {
-        padding: 6px 8px;
-    }
-
-    .distance-img
-    {
-        min-height: 31px; 
-    }
-
-    .armour-img
-    {
-        min-width: 22px;
-    }
-
-    .more-button
-    {
-        span
-        {
-            color: black;
-        }
-    }
-
     .principal-info
     {
-        display: flex;        
+        display: inline-flex;        
 
         p {            
             margin: 10px 5px 10px 10px;
+        }
+    }
+
+    .slide-offers
+    {
+        height: 230px;
+        width: 100% !important;
+        .slide-zoom
+        {
+            width: 75%;
+        }
+    }
+
+    .set-of-offers
+    {
+        height: 44%;
+        margin: 0px 0px 8px;
+    }
+
+    .offer
+    {
+        background: #607D8B;
+    }
+
+    .icon-body-weapons
+    {
+        width: 20px;
+        height: 22px;
+        margin: 0px 6px 2px 0px;
+    }
+
+    .principal-info-body-weapons
+    {
+        width: 30%;
+        margin: 3% 5% 3% 8%;
+    }
+
+    .principal-info-spellcaster-items
+    {
+        width: 33%;
+        margin: 9% 5% 3% 5%;
+        height: 25%;  
+    }
+
+    .card-observation
+    {
+        margin: 1px 10px 10px 10px;
+        
+        .card-content
+        {
+            padding: 8px 16px;
         }
     }
 }
