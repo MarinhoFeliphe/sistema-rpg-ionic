@@ -1,0 +1,72 @@
+page-purchase {
+
+    .toolbar-purchase 
+        .toolbar-content
+        {
+            display: contents;
+        }
+
+    .div-attr
+    {
+        display: inline-flex;
+        padding-top: 10px;
+
+        div
+        {
+            display: inline-flex;
+            height: 20px;
+            width: 10%;
+            margin: 3px 10px 6px 5px;
+            
+            img
+            {
+                width: 61px;
+            }
+
+            p
+            {
+                padding: 2px 0px 0px 5px;
+            }
+        }
+    }
+
+    .div-valor
+    {
+        display: inline-flex;
+        width: 15%;
+        img
+        {
+            width: 26px;
+            height: 20px;
+            padding-right: 10px;
+        }
+    }
+
+    .div-actions
+    {
+        width: 20%;
+        display: grid;
+    }
+
+    .div-quantidade
+    {
+        display: inline-flex;
+        padding-top: 10px;
+    }
+
+    .nolinebreak
+    {
+        float: left;
+        padding-right: 7px; 
+    }
+
+    .div-remove
+    {
+        text-align: center;
+
+        .icon
+        {
+            font-size: 1.3em;
+        }
+    }
+}

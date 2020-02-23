@@ -1,5 +1,5 @@
 <ion-content padding>
-    <ion-slides pager="true" style="height: 93%;">
+    <ion-slides #slides pager="true" style="height: 93%;" (ionSlideDidChange)="ionSlideDidChange(slides)">
       <ion-slide *ngFor="let race of races">
         <img class="race-img" src="assets/imgs/races/{{race.name}}.jpg">      
         <h1>{{ race.name }}</h1>        
@@ -22,6 +22,6 @@
       </ion-slide>
     </ion-slides>  
     <div style="text-align: center;">
-      <button class="btnConfirm" ion-button (click)="chooseRace(race)">Confirmar Raça</button>
+      <button class="btnConfirm" ion-button (click)="chooseRace()">Confirmar Raça</button>
     </div>
 </ion-content>

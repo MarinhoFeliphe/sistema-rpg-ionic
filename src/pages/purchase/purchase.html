@@ -1,0 +1,61 @@
+<ion-header>
+  <ion-navbar>
+    <ion-title style="padding: 10px 10px 10px 68px;">Acordo</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content>
+  <ion-list>
+    <ion-list-header *ngIf="amount != 0" style="text-align: center;">
+      Itens escolhidos
+    </ion-list-header>
+    <ion-item *ngFor="let item of purchase.purchaseItems">
+      <div style="display: flex;">
+        <div style="width: 63%;">
+          <h2 style="white-space: normal;">{{ item.nome }}</h2>
+          <div class="div-attr">
+            <div *ngIf="item.defesa">
+              <img src="assets/imgs/market/armour.svg">
+              <p>{{ item.defesa }}</p>
+            </div>
+            <div *ngIf="item.fn">
+              <img src="assets/imgs/market/fn.png">
+              <p>{{ item.fn }}</p>
+            </div>
+            <div *ngIf="item.dano">
+              <img src="assets/imgs/market/armas.jpg">
+              <p>{{ item.dano }}</p>
+            </div>
+          </div>
+        </div>
+        <div class="div-valor">
+          <img src="assets/imgs/market/gold.png">
+          <p>{{ item.preco }}</p>
+        </div>
+        <div class="div-actions">
+          <div class="div-remove">
+            <ion-icon name="trash" color="danger" (click)="removeItem(item)"></ion-icon>
+          </div>
+          <div class="div-quantidade">
+            <ion-icon class="nolinebreak" name="remove-circle" color="primary" (click)="decrease(item)"></ion-icon>
+            <p class="nolinebreak">{{ item.quantidade }}</p>
+            <ion-icon name="add-circle" color="primary" (click)="increase(item)"></ion-icon>
+          </div>
+        </div>
+      </div>
+    </ion-item>
+    <ion-item *ngIf="amount == 0">
+      <div style="text-align: center;">
+        <h1 style="white-space: normal;">Sem itens para o acordo</h1>
+      </div>
+    </ion-item>
+  </ion-list>
+
+</ion-content>
+
+<ion-footer *ngIf="amount != 0">
+  <ion-toolbar class="toolbar-purchase">    
+    <button ion-button (click)="closeAgreement()">Finalizar Compra</button>
+    <p>Total: {{ amount }}</p>
+  </ion-toolbar>
+</ion-footer>

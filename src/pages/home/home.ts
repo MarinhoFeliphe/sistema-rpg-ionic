@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { NavController, IonicPage, NavParams } from 'ionic-angular';
+import { NavController, IonicPage, NavParams, AlertController } from 'ionic-angular';
 import { MenuController } from 'ionic-angular/components/app/menu-controller';
 import { CredenciaisDTO } from '../../models/credenciais.dto';
 import { AuthService } from '../../services/auth.service';
@@ -20,7 +20,8 @@ export class HomePage {
       public navCtrl: NavController
     , public navParams: NavParams
     , public menu: MenuController
-    , public auth: AuthService) {
+    , public auth: AuthService
+    , public alertController: AlertController) {
 
   }
 
@@ -54,7 +55,7 @@ export class HomePage {
         this.auth.successFullLogin(response.headers.get('Authorization'));        
         this.navCtrl.setRoot('CharacterSheetPage');
       },
-      error => {});
+      error => this.showAlert(error['message']));
   }
 
   signUp() 
@@ -62,4 +63,13 @@ export class HomePage {
     this.navCtrl.push('SignupPage');
   }
 
+  showAlert(subTitle: string) {
+    const alert = this.alertController.create({
+      title: 'Atenção',
+      subTitle: subTitle,
+      buttons: ['Ok']
+    });
+
+    alert.present();
+  }
 }

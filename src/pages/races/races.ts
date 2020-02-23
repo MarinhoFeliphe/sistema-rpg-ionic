@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams, AlertController } from 'ionic-angular';
+import { IonicPage, NavController, NavParams, AlertController, Slides } from 'ionic-angular';
 import { RaceService } from '../../services/race/race.service';
 import { RacesDTO } from '../../models/race.dto';
 import { MenuController } from 'ionic-angular/components/app/menu-controller';
@@ -14,6 +14,7 @@ export class RacesPage {
 
   races: RacesDTO[];
   characterSheet: CharacterSheet;
+  chosenRace: RacesDTO;
 
   constructor(
       public navCtrl: NavController
@@ -25,21 +26,18 @@ export class RacesPage {
       this.characterSheet = new CharacterSheet();
     }
 
-  ionViewDidLoad() 
-  {
+  ionViewDidLoad() {
     this.raceService.findAll()
-      .subscribe(response => 
-      {
-        this.races = response; 
+      .subscribe(response =>  {
+        this.races = response;
+        this.chosenRace = this.races[0]; 
         this.showAlert('Atenção', 'Todas as habilidades de raça são do tipo Suporte');
       },
       error => {}); 
   }
   
-  showAlert(title: string, subTitle: string)
-  {
-    const alert = this.alertController.create(
-    {
+  showAlert(title: string, subTitle: string) {
+    const alert = this.alertController.create({
       title: title,
       subTitle: subTitle,
       buttons: ['Ok']
@@ -48,10 +46,16 @@ export class RacesPage {
     alert.present();
   }
   
-  chooseRace(race: RacesDTO)
-  {
-    this.characterSheet.race = race;
+  chooseRace() {
+    this.characterSheet.race = this.chosenRace;
     this.navCtrl.push('ClassePage', { characterSheet :  this.characterSheet});
   }
 
+  ionSlideDidChange(slides: Slides) {
+    slides._slides.forEach((slide, index) => {
+      if (slide.className.includes('swiper-slide-active')) {
+        this.chosenRace = this.races[index];
+      }
+    });
+  }
 }

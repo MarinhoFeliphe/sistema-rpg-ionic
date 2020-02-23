@@ -7,15 +7,22 @@
 <ion-content>
 
   <ion-fab top right edge>
-    <button ion-fab mini style="background-color: #607D8B;">
-      <img src="assets/imgs/market/bag.png">
+    <button ion-fab mini class="btn-coins">
+      <img src="assets/imgs/market/gold.png">
+      <p>{{ this.characterSheet?.coins }}</p>
+    </button>
+  </ion-fab>
+
+  <ion-fab top right class="btn-deal">
+    <button ion-fab mini (click)="analyzePurchase()">
+      <img src="assets/imgs/market/deal.png">
     </button>
   </ion-fab>
 
   <ion-title style="text-align: center;  margin: 10px 0px 0px;">Equipamentos de Proteção</ion-title>
   <ion-slides pager="true" class="set-of-offers">
     <ion-slide *ngFor="let weapon of protectiveEquipment" class="slide-offers">
-      <ion-card class="offer">
+      <ion-card class="offer" (click)="addItemToPurchase(weapon)">
         <ion-card-header>
           <ion-card-title style="text-align: center; white-space: normal; font-size: 1.6rem;">{{ weapon.nome }}</ion-card-title>
         </ion-card-header>
@@ -47,7 +54,7 @@
   <ion-title style="text-align: center;">Armas de Distância</ion-title>
   <ion-slides pager="true" class="set-of-offers">
     <ion-slide *ngFor="let weapon of distanceWeapons" class="slide-offers">
-      <ion-card class="offer">
+      <ion-card class="offer" (click)="addItemToPurchase(weapon)">
         <div style="display: flex;">
           <div style="width: 57%;">
             <ion-card-header>
@@ -85,26 +92,26 @@
 
   <ion-title style="text-align: center;">Itens para Conjuradores</ion-title>
   <ion-slides pager="true" class="set-of-offers">
-    <ion-slide *ngFor="let weapon of spellcasterItems" class="slide-offers">
-      <ion-card class="offer">
+    <ion-slide *ngFor="let item of spellcasterItems" class="slide-offers">
+      <ion-card class="offer" (click)="addItemToPurchase(item)">
         <div style="display: flex;">
           <div style="width: 74%;">
             <ion-card-header>
-              <ion-card-title style="text-align: center; white-space: normal; font-size: 1.6rem;">{{ weapon.nome }}</ion-card-title>
+              <ion-card-title style="text-align: center; white-space: normal; font-size: 1.6rem;">{{ item.nome }}</ion-card-title>
             </ion-card-header>
           </div>
           <ion-card class="principal-info-spellcaster-items">
             <ion-card-content style="padding: 3px 0px 0px 0px;">
               <div style="display: inline-flex;">
                 <img src="assets/imgs/market/gold.png" class="icon-body-weapons">
-                <p>{{ weapon.preco }}</p>
+                <p>{{ item.preco }}</p>
               </div>
             </ion-card-content>
           </ion-card>
         </div>
-        <ion-card *ngIf="weapon.descricao" class="card-observation">
+        <ion-card *ngIf="item.descricao" class="card-observation">
           <ion-card-content>
-            <p style="text-align: center">{{ weapon.descricao }}</p>
+            <p style="text-align: center">{{ item.descricao }}</p>
           </ion-card-content>
         </ion-card>
       </ion-card>
@@ -113,26 +120,26 @@
 
   <ion-title style="text-align: center;">Outros Itens</ion-title>
   <ion-slides pager="true" class="set-of-offers">
-    <ion-slide *ngFor="let weapon of otherItems" class="slide-offers">
-      <ion-card class="offer">
+    <ion-slide *ngFor="let item of otherItems" class="slide-offers">
+      <ion-card class="offer" (click)="addItemToPurchase(item)">
         <div style="display: flex;">
           <div style="width: 74%;">
             <ion-card-header>
-              <ion-card-title style="text-align: center; white-space: normal; font-size: 1.6rem;">{{ weapon.nome }}</ion-card-title>
+              <ion-card-title style="text-align: center; white-space: normal; font-size: 1.6rem;">{{ item.nome }}</ion-card-title>
             </ion-card-header>
           </div>
           <ion-card class="principal-info-spellcaster-items">
             <ion-card-content style="padding: 3px 0px 0px 0px;">
               <div style="display: inline-flex;">
                 <img src="assets/imgs/market/gold.png" class="icon-body-weapons">
-                <p>{{ weapon.preco }}</p>
+                <p>{{ item.preco }}</p>
               </div>
             </ion-card-content>
           </ion-card>
         </div>
-        <ion-card *ngIf="weapon.descricao" class="card-observation">
+        <ion-card *ngIf="item.descricao" class="card-observation">
           <ion-card-content>
-            <p style="text-align: center">{{ weapon.descricao }}</p>
+            <p style="text-align: center">{{ item.descricao }}</p>
           </ion-card-content>
         </ion-card>
       </ion-card>
@@ -143,7 +150,7 @@
 
   <ion-slides pager="false" class="set-of-offers">
     <ion-slide *ngFor="let weapon of bodyWeapons" class="slide-offers">
-      <ion-card class="offer">        
+      <ion-card class="offer" (click)="addItemToPurchase(weapon)">        
         <div style="display: flex;">
           <div style="width: 57%;">
             <ion-card-header>
