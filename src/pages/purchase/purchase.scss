@@ -69,4 +69,17 @@ page-purchase {
             font-size: 1.3em;
         }
     }
+
+    .btn-coins
+    {
+        width: 80px !important;
+        height: 28px !important;
+        border-radius: inherit;
+        background-color: #607D8B;
+
+        img {
+            width: 33%;
+            margin: 10px 8px 10px 0px
+        }
+    }
 }

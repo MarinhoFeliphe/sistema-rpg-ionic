@@ -1,8 +1,8 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
-import { EquipmentDTO } from '../../models/equipment.dto';
-import { WeaponDTO } from '../../models/weapon.dto';
 import { Purchase } from '../../utils/Purchase';
+import { CharacterSheet } from '../../models/character_sheet.dto';
+import { PurchaseService } from '../../services/store/purchase.service';
 
 @IonicPage()
 @Component({
@@ -11,52 +11,29 @@ import { Purchase } from '../../utils/Purchase';
 })
 export class PurchasePage {
   
-  private purchase: Purchase = { purchaseItems: [] };
-  private amount: number = 0;
+  public purchase: Purchase = { purchaseItems: [] };
+  public characterSheet: CharacterSheet;
+  public amount: number = 0;
 
   constructor(
     public navCtrl: NavController, 
-    public navParams: NavParams) {}
+    public navParams: NavParams,
+    public purchaseService: PurchaseService) {}
 
   ionViewDidLoad() {
    this.purchase = this.navParams.get('chosenItems');
-   this.calculateAmount();
+   this.characterSheet = this.navParams.get('characterSheet');
+   this.purchaseService.setContexto(this);
+   this.purchaseService.calculateAmount();
   }
 
-  decrease(item) {
-    let i = this.purchase.purchaseItems.indexOf(item);
-    this.purchase.purchaseItems[i]['quantidade'] -= 1;
+  decrease = item => this.purchaseService.decrease(item)
 
-    if (this.purchase.purchaseItems[i]['quantidade'] == 0) {
-      this.removeItem(item);
-    } else {
-      this.amount -= item['preco'];
-    }
+  increase = item => this.purchaseService.increase(item)
 
-  }
+  removeItem = item => this.purchaseService.removeItem(item)
 
-  increase(item) {
-    let i = this.purchase.purchaseItems.indexOf(item);
-    this.purchase.purchaseItems[i]['quantidade'] += 1;
-    this.amount += item['preco'];
-  }
+  calculateAmount = () => this.purchaseService.calculateAmount()
 
-  removeItem(item)  {
-    let i = this.purchase.purchaseItems.indexOf(item);
-    this.purchase.purchaseItems.splice(i, 1);
-    this.calculateAmount();
-  }
-
-  calculateAmount() {
-    if (this.purchase.purchaseItems.length) {
-      const reducer = (accumulator, currentValue) => accumulator + currentValue;
-      this.amount = this.purchase.purchaseItems.map(e => e.preco * e.quantidade).reduce(reducer);
-    } else {
-      this.amount = 0;
-    }
-  }
-
-  closeAgreement() {
-    
-  }
+  closeAgreement = () => this.purchaseService.closeAgreement()
 }

@@ -16,6 +16,7 @@ import { AuthInterceptorProvider } from '../interceptors/auth-interceptors';
 import { ClasseService } from '../services/classe/classe.service';
 import { SkillService } from '../services/skill/skill.service';
 import { StoreService } from '../services/store/store.service';
+import { PurchaseService } from '../services/store/purchase.service';
 
 @NgModule({
   declarations: [
@@ -42,7 +43,8 @@ import { StoreService } from '../services/store/store.service';
     UserService,
     ClasseService,
     SkillService,
-    StoreService
+    StoreService,
+    PurchaseService
   ]
 })
 export class AppModule {}
