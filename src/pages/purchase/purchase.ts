@@ -23,7 +23,7 @@ export class PurchasePage {
   ionViewDidLoad() {
    this.purchase = this.navParams.get('chosenItems');
    this.characterSheet = this.navParams.get('characterSheet');
-   this.purchaseService.setContexto(this);
+   this.purchaseService.setContexto(this); 
    this.purchaseService.calculateAmount();
   }
 

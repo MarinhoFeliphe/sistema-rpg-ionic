@@ -17,6 +17,9 @@ import { ClasseService } from '../services/classe/classe.service';
 import { SkillService } from '../services/skill/skill.service';
 import { StoreService } from '../services/store/store.service';
 import { PurchaseService } from '../services/store/purchase.service';
+import { ComponentsInfoComponent } from '../components/components-info/components-info';
+import { ComponentsModule } from '../components/components.module';
+
 
 @NgModule({
   declarations: [

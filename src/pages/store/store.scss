@@ -81,4 +81,28 @@ page-store {
             margin: 10px 8px 10px 0px
         }
     }
+
+    .div-legend
+    {
+        div 
+        {
+            display: flex;
+        }
+    }
+
+    .btn-info
+    {
+        background-color: #607d8b;
+        margin: 10px;
+
+        .icon
+        {
+            font-size: 4.4rem;
+        }
+    }
+
+    .fab-info
+    {
+        top: 60px
+    }
 }

@@ -17,27 +17,23 @@ export class ClassePage {
   constructor(
       public navCtrl: NavController
     , public navParams: NavParams
-    , public classeService: ClasseService) 
-  {}
+    , public classeService: ClasseService) {}
 
-  ionViewDidEnter()
-  {
+  ionViewDidEnter() {
     this.characterSheet = this.navParams.get('characterSheet');
+    this.classeService.setContext(this);
   }
 
-  ionViewDidLoad() 
-  {
+  ionViewDidLoad() {
     this.classeService.findAll()
-      .subscribe(response => 
-      {
+      .subscribe(response => {
         this.classes = response;
       },
       error => {});
   }
 
-  chooseClasse(classe: ClasseDTO)
-  {
-    this.characterSheet.classe = classe;
+  chooseClasse(classe: ClasseDTO) {
+    this.classeService.chooseClasse(classe);
     this.navCtrl.push('SkillPage', { characterSheet :  this.characterSheet});
   }
 }

@@ -26,7 +26,7 @@ export class SkillPage {
   ionViewDidLoad() 
   {
     this.characterSheet = this.navParams.get('characterSheet');
-    this.skills = this.sortSkills(this.characterSheet.classe.skills);
+    this.skills = this.characterSheet.classe.skills;
     this.skillsWithRequirements = this.skills.filter(skill => skill['requirements'] != null);
     
     if(this.skillsWithRequirements) {
@@ -35,8 +35,6 @@ export class SkillPage {
   }
 
   chooseSkill = (skill: SkillDTO) => this.skillService.skillValidation(skill, this.chosenSkills);
-
-  sortSkills = (skills: SkillDTO[]) => skills.sort((a, b) => (a.feature < b.feature) ? 1 : -1);
 
   chooseEquipments() {
     this.characterSheet.skills = this.skillService.getChosenSkills();
