@@ -35,6 +35,7 @@ export class RaceService
 
     chooseRace() {
         this.racesPage.characterSheet.race = this.racesPage.chosenRace;
+        this.racesPage.characterSheet.attributes = this.racesPage.characterSheet.race.attributes;
         this.racesPage.navCtrl.push('ClassePage', { characterSheet :  this.racesPage.characterSheet});
     }
 

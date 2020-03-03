@@ -3,6 +3,7 @@ import { IonicPage, NavController, NavParams, AlertController } from 'ionic-angu
 import { SkillDTO } from '../../models/skill.dto';
 import { CharacterSheet } from '../../models/character_sheet.dto';
 import { SkillService } from '../../services/skill/skill.service';
+import { CharacterSheetService } from '../../services/character-sheet/character-sheet.service';
 
 @IonicPage()
 @Component({
@@ -19,12 +20,12 @@ export class SkillPage {
   constructor(
       public navCtrl: NavController
     , public navParams: NavParams
-    , public alertController: AlertController
     , public skillService: SkillService)
   {}
 
   ionViewDidLoad() 
   {
+    this.skillService.setContexto(this);
     this.characterSheet = this.navParams.get('characterSheet');
     this.skills = this.characterSheet.classe.skills;
     this.skillsWithRequirements = this.skills.filter(skill => skill['requirements'] != null);
@@ -34,10 +35,7 @@ export class SkillPage {
     }
   }
 
-  chooseSkill = (skill: SkillDTO) => this.skillService.skillValidation(skill, this.chosenSkills);
+  chooseSkill = (skill: SkillDTO) => this.skillService.skillValidation(skill, this.chosenSkills)
 
-  chooseEquipments() {
-    this.characterSheet.skills = this.skillService.getChosenSkills();
-    this.navCtrl.push("StorePage", { characterSheet :  this.characterSheet});
-  }
+  chooseEquipments = () => this.skillService.chooseEquipments()
 }

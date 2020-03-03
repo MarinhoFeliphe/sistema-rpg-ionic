@@ -3,6 +3,7 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { StorageService } from '../../services/storage.service';
 import { UserService } from '../../services/user/user.service';
 import { UserDTO } from '../../models/user.dto';
+import { LocalUser } from '../../models/local_user';
 
 @IonicPage()
 @Component({
@@ -21,8 +22,7 @@ export class CharacterSheetPage {
     , public userService: UserService) {
   }
 
-  ionViewDidLoad() {
-    
+  ionViewDidLoad() {    
     let localUser = this.storage.getLocalUser();
     if(localUser && localUser.email) {
       this.userService
@@ -30,9 +30,16 @@ export class CharacterSheetPage {
         .subscribe(response => {
           this.user = response;
           this.criarFichar = (this.user.characterSheet) ? false : true;
+          if (!this.criarFichar)  {
+            let localUser: LocalUser = this.storage.getLocalUser();
+            localUser.characterSheet =  this.user.characterSheet;
+
+            this.storage.setLocalUser(localUser);
+
+            console.log(this.storage.getLocalUser().characterSheet);
+          }
         },
         error => {});
-
     }
   }
 

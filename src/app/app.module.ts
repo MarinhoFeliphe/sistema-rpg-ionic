@@ -17,8 +17,7 @@ import { ClasseService } from '../services/classe/classe.service';
 import { SkillService } from '../services/skill/skill.service';
 import { StoreService } from '../services/store/store.service';
 import { PurchaseService } from '../services/store/purchase.service';
-import { ComponentsInfoComponent } from '../components/components-info/components-info';
-import { ComponentsModule } from '../components/components.module';
+import { CharacterSheetService } from '../services/character-sheet/character-sheet.service';
 
 
 @NgModule({
@@ -47,7 +46,8 @@ import { ComponentsModule } from '../components/components.module';
     ClasseService,
     SkillService,
     StoreService,
-    PurchaseService
+    PurchaseService,
+    CharacterSheetService
   ]
 })
 export class AppModule {}

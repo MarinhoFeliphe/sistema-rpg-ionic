@@ -21,34 +21,27 @@ export class HomePage {
     , public navParams: NavParams
     , public menu: MenuController
     , public auth: AuthService
-    , public alertController: AlertController) {
+    , public alertController: AlertController) {}
 
-  }
-
-  ionViewDidLoad() 
-  {
+  ionViewDidLoad() {
     let newUser = this.navParams.get('pNewUser');
 
-    if(newUser) 
-    {
+    if(newUser) {
       this.creds.email = newUser['email'];
       this.creds.password = newUser['password'];
     }
 
   }
 
-  ionViewWillEnter() 
-  {
+  ionViewWillEnter() {
     this.menu.swipeEnable(false);
   }
 
-  ionViewDidLeave() 
-  {
+  ionViewDidLeave() {
     this.menu.swipeEnable(true);
   }
 
-  login() 
-  {
+  login() {
     this.auth
       .authenticate(this.creds)
       .subscribe(response => {
@@ -58,8 +51,7 @@ export class HomePage {
       error => this.showAlert(error['message']));
   }
 
-  signUp() 
-  {
+  signUp() {
     this.navCtrl.push('SignupPage');
   }
 

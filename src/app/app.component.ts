@@ -3,6 +3,7 @@ import { Nav, Platform } from 'ionic-angular';
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 import { AuthService } from '../services/auth.service';
+import { StorageService } from '../services/storage.service';
 
 @Component({
   templateUrl: 'app.html'
@@ -18,12 +19,15 @@ export class MyApp {
     public platform: Platform, 
     public statusBar: StatusBar, 
     public splashScreen: SplashScreen,
-    public auth: AuthService) {
+    public auth: AuthService,
+    public storage: StorageService) {
     this.initializeApp();
 
     // used for an example of ngFor and navigation
     this.pages = [      
-      { title: 'Logout', component: ''}
+      { title: 'Minha Ficha', component: 'CharacterSheetPage'},
+      { title: 'Mercado', component: ''},
+      { title: 'Logout', component: ''},
     ];
 
   }
@@ -39,8 +43,12 @@ export class MyApp {
     
     switch (page.title) {
       case 'Logout':
-      this.auth.logout();
-      this.nav.setRoot('HomePage');
+        this.auth.logout();
+        this.nav.setRoot('HomePage');
+      break;
+      case 'Mercado':
+        let characterSheet = this.storage.getLocalUser().characterSheet
+        this.nav.setRoot('StorePage', { characterSheet });
       break;
 
       default:

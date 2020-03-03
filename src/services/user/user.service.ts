@@ -4,6 +4,8 @@ import { Observable } from "rxjs/Rx";
 import { UserDTO } from "../../models/user.dto";
 import { API_CONFIG } from "../../config/api.config";
 import { StorageService } from "../storage.service";
+import { CharacterSheet } from "../../models/character_sheet.dto";
+import { CharacterSheetNewDTO } from "../../models/character_sheet.new.dto";
 
 @Injectable()
 export class UserService {
@@ -23,6 +25,13 @@ export class UserService {
                 observe: 'response',
                 responseType: 'text'
             }
+        )
+    }
+
+    insertCharacterSheet(email: string, characterSheetNewDTO: CharacterSheetNewDTO) {
+        return this.http.patch(
+            `${API_CONFIG.baseUrl}/users?email=${email}`,
+            characterSheetNewDTO
         )
     }
 }

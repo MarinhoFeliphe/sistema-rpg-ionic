@@ -4,6 +4,9 @@ import { SkillDTO } from "../../models/skill.dto";
 import { AlertController } from "ionic-angular";
 import { SkillWithRequirement } from "../../utils/SkillWithRequirement";
 import { RequirementType } from "../../utils/Dominio/RequirementType";
+import { SkillPage } from "../../pages/skill/skill";
+import { CharacterSheetService } from "../character-sheet/character-sheet.service";
+import { StorageService } from "../storage.service";
 
 @Injectable()
 export class SkillService
@@ -12,9 +15,11 @@ export class SkillService
     chosenSkills: SkillDTO[] = [];
     private _renderer: Renderer;
     private _el: ElementRef;
+    private skillPage: SkillPage;
 
     constructor(public http: HttpClient
-              , public alertController: AlertController) {}
+              , public alertController: AlertController
+              , public characterService: CharacterSheetService) {}
 
     changeSkillCardStyle(elementRef: ElementRef, renderer: Renderer) {
 
@@ -152,15 +157,42 @@ export class SkillService
         this.skillsWithRequirements = requirementObjects;
     }
 
-
+    chooseEquipments() {
+        this.skillPage.characterSheet.skills = this.getChosenSkills();
+        this.finalizationAlert('Atenção', 'Se decidir avançar, sua ficha será finalizada sendo assim, não será permitido trocar nenhuma das opções escolhidas, se desejar prosseguir devo lhe perguntar, gostaria de ir ao mercado?')
+    }
 
     showAlert(title: string, subTitle: string)
     {
         const alert = this.alertController.create(
         {
-            title: title,
-            subTitle: subTitle,
+            title,
+            subTitle,
             buttons: ['Ok']
+        });
+
+        alert.present();
+    }
+
+    finalizationAlert(title: string, subTitle: string)
+    {
+        const alert = this.alertController.create(
+        {
+            title,
+            subTitle,
+            buttons: [
+                {
+                    text: 'Sim',
+                    handler: () => {
+                        this.characterService.finishingTouches(this.skillPage.characterSheet);
+                        this.skillPage.navCtrl.setRoot("StorePage", { characterSheet :  this.skillPage.characterSheet});
+                    }
+                },
+                {
+                    text: 'Não',
+                    handler: () => {} 
+                }
+            ]
         });
 
         alert.present();
@@ -168,5 +200,9 @@ export class SkillService
 
     getChosenSkills(): SkillDTO[] {
         return this.chosenSkills;
+    }
+
+    setContexto(skillPage: SkillPage) {
+        this.skillPage = skillPage;
     }
 }

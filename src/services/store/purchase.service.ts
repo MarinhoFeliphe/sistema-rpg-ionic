@@ -44,10 +44,6 @@ export class PurchaseService {
         this.purchasePage.amount += item['preco'];
     }
 
-    setContexto(purchasePage: PurchasePage) {
-        this.purchasePage = purchasePage;
-    }
-
     closeAgreement() {
         if (this.purchasePage.amount > this.purchasePage.characterSheet.coins) {
             this.showAlert('Moedas insuficientes.', 'Nada feito!');
@@ -86,5 +82,9 @@ export class PurchaseService {
     removeAllItems() {
         this.purchasePage.purchase.purchaseItems = [];
         this.calculateAmount();
+    }
+
+    setContexto(purchasePage: PurchasePage) {
+        this.purchasePage = purchasePage;
     }
 }

@@ -18,6 +18,7 @@ export class CharacterSheet
     manaPoints: number;
     skills: SkillDTO[];
     equipment: Equipamentos;
+    defense: number;
 
     constructor(){}
 }
